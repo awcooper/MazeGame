@@ -1,0 +1,36 @@
+group 'com.adamwcooper.games'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+public String getLwjglArch(String platform) {
+    switch(platform.replaceAll(' ', '').toLowerCase()) {
+        case ~/.*linux.*/:  return 'linux'
+        case ~/.*darwin.*/: return 'macos'
+        case ~/.*osx.*/:    return 'macos'
+        case ~/.*win.*/:    return 'windows'
+        default:            return platform
+    }
+}
+
+ext {
+    //lwjglVersion = "3.0.0b"
+    lwjglVersion = "3.1.0"
+    lwjglArch = getLwjglArch(System.properties['os.name'])
+}
+
+dependencies {
+    compile "org.lwjgl:lwjgl:$lwjglVersion"
+    compile "org.lwjgl:lwjgl-glfw:$lwjglVersion"
+    compile "org.lwjgl:lwjgl-opengl:$lwjglVersion"
+
+    runtime "org.lwjgl:lwjgl:$lwjglVersion:natives-$lwjglArch"
+    runtime "org.lwjgl:lwjgl-glfw:$lwjglVersion:natives-$lwjglArch"
+}

@@ -27,10 +27,10 @@ ext {
 }
 
 dependencies {
+    compile group: 'org.lwjgl', name: 'lwjgl-util', version: '3.1.0'
     compile "org.lwjgl:lwjgl:$lwjglVersion"
     compile "org.lwjgl:lwjgl-glfw:$lwjglVersion"
     compile "org.lwjgl:lwjgl-opengl:$lwjglVersion"
-
     runtime "org.lwjgl:lwjgl:$lwjglVersion:natives-$lwjglArch"
     runtime "org.lwjgl:lwjgl-glfw:$lwjglVersion:natives-$lwjglArch"
 }

@@ -8,7 +8,6 @@ public class Circle {
     private final float radius;
     static float y;
     static float x;
-    private final int PIECES = 400;
 
     public Circle(float radius, float x, float y) {
         this.radius = radius;
@@ -21,11 +20,20 @@ public class Circle {
         float xcord;
         float ycord;
         for (float i = 0; i < 360; i++){
-            xcord = (float) Math.cos(Math.toRadians(i)) * this.radius;
-            ycord = (float) Math.sin(Math.toRadians(i)) * this.radius;
+            xcord = (float) Math.cos(Math.toRadians(i)) * this.radius + this.x;
+            ycord = (float) Math.sin(Math.toRadians(i)) * this.radius + this.y;
             glVertex2f(xcord,ycord);
         }
         glEnd();
+        glFlush();
+    }
+
+    public void incrementX(float dx){
+        this.x += dx;
+    }
+
+    public void incrementY(float dy){
+        this.y += dy;
     }
 
 }

@@ -13,9 +13,12 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
+import com.adamwcooper.games.views.shapes.Circle;
+
 public class MazeGame {
     // The window handle
     private long window;
+    private Circle c = new Circle(.1f,.25f,.25f);
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
@@ -50,7 +53,8 @@ public class MazeGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(300, 300, "Hello World!", NULL, NULL);
+        window = glfwCreateWindow(500, 500, "Maze Explorer!", NULL, NULL);
+
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
 
@@ -58,6 +62,22 @@ public class MazeGame {
         glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
             if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE )
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
+            if( key == GLFW_KEY_RIGHT){
+                c.incrementX(.1f);
+            }
+
+            if( key == GLFW_KEY_LEFT){
+                c.incrementX(-.1f);
+            }
+
+            if( key == GLFW_KEY_UP){
+                c.incrementY(.1f);
+            }
+
+            if( key == GLFW_KEY_DOWN){
+                c.incrementY(-.1f);
+            }
+
         });
 
         // Get the thread stack and push a new frame
@@ -98,14 +118,12 @@ public class MazeGame {
 
         // Set the clear color
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
-
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
+            c.draw();
             glfwSwapBuffers(window); // swap the color buffers
-
             // Poll for window events. The key callback above will only be
             // invoked during this call.
             glfwPollEvents();

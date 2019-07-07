@@ -34,8 +34,6 @@ public class CircleController {
                     c.incrementY(-MOVEMENT_DELTA);
                 }
             }
-            System.out.println(c.getX());
-            System.out.println(c.getY());
         });
     }
 
@@ -44,7 +42,7 @@ public class CircleController {
     }
 
     private static boolean isYInBounds(Circle c, float delta){
-        return -WINDOW_WIDTH <= c.getY() + delta && c.getY() + delta <= WINDOW_WIDTH;
+        return -WINDOW_WIDTH + c.getRadius()<= c.getY() + delta && c.getY() + delta <= WINDOW_WIDTH - c.getRadius();
     }
 }
 

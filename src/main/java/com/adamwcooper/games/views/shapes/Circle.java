@@ -39,4 +39,6 @@ public class Circle {
     public float getX() { return this.x; }
 
     public float getY() { return this.y; }
+
+    public float getRadius() { return this.radius; }
 }

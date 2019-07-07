@@ -36,4 +36,7 @@ public class Circle {
         this.y += dy;
     }
 
+    public float getX() { return this.x; }
+
+    public float getY() { return this.y; }
 }

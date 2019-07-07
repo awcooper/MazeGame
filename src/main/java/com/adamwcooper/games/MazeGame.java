@@ -1,5 +1,6 @@
 package com.adamwcooper.games;
 
+import com.adamwcooper.games.controllers.CircleController;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
@@ -62,26 +63,8 @@ public class MazeGame {
             throw new RuntimeException("Failed to create the GLFW window");
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
-        glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
-            if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE )
-                glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
-            if( key == GLFW_KEY_RIGHT){
-                c.incrementX(.1f);
-            }
 
-            if( key == GLFW_KEY_LEFT){
-                c.incrementX(-.1f);
-            }
-
-            if( key == GLFW_KEY_UP){
-                c.incrementY(.1f);
-            }
-
-            if( key == GLFW_KEY_DOWN){
-                c.incrementY(-.1f);
-            }
-
-        });
+        CircleController.addCircleEventListener(window,c);
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {

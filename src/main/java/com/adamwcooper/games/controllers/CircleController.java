@@ -7,7 +7,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_DOWN;
 
 public class CircleController {
-    private static final float MOVEMENT_DELTA = .1f;
+    private static final float MOVEMENT_DELTA = .2f;
     private static final int WINDOW_WIDTH = 1;
 
     public static void addCircleEventListener(Long win, Circle c){
@@ -38,7 +38,7 @@ public class CircleController {
     }
 
     private static boolean isXInBounds(Circle c, float delta){
-        return -WINDOW_WIDTH <= c.getX() + delta && c.getX() + delta <= WINDOW_WIDTH;
+        return -WINDOW_WIDTH + c.getRadius() <= c.getX() + delta && c.getX() + delta <= WINDOW_WIDTH - c.getRadius();
     }
 
     private static boolean isYInBounds(Circle c, float delta){

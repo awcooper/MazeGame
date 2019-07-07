@@ -1,19 +1,19 @@
 package com.adamwcooper.games;
 
-import org.lwjgl.*;
-import org.lwjgl.glfw.*;
-import org.lwjgl.opengl.*;
-import org.lwjgl.system.*;
-
-import java.nio.*;
-
-import static org.lwjgl.glfw.Callbacks.*;
-import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryStack.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import org.lwjgl.Version;
+import org.lwjgl.glfw.GLFWErrorCallback;
 
 import com.adamwcooper.games.views.shapes.Circle;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryStack;
+
+import java.nio.IntBuffer;
+import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.system.MemoryStack.stackPush;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class MazeGame {
     // The window handle
@@ -33,6 +33,9 @@ public class MazeGame {
         // Terminate GLFW and free the error callback
         glfwTerminate();
         glfwSetErrorCallback(null).free();
+    }
+
+    private void glfwFreeCallbacks(long window) {
     }
 
     private void glfwDestroyWindow(long window) {

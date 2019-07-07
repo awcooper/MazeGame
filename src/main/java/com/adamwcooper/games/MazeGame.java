@@ -109,11 +109,17 @@ public class MazeGame {
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             c.draw();
-            for (float i = -1.0f; i < 1; i += .1){
+            for (float i = -1.0f; i < 1; i += .2){
                 glBegin(GL_LINES);
                 glLineWidth(3);
-                glVertex2f(0, i);
+                glVertex2f(-1, i);
                 glVertex2f(1, i);
+                glEnd();
+                glFlush();
+                glBegin(GL_LINES);
+                glLineWidth(3);
+                glVertex2f(i,-1);
+                glVertex2f(i,1);
                 glEnd();
                 glFlush();
             }

@@ -9,11 +9,16 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_DOWN;
 public class CircleController {
     private static final float MOVEMENT_DELTA = .2f;
     private static final int WINDOW_WIDTH = 1;
+    private static Long acting  = System.currentTimeMillis();
 
     public static void addCircleEventListener(Long win, Circle c){
         glfwSetKeyCallback(win, (window, key, scancode, action, mods) -> {
             if ( key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE )
                 glfwSetWindowShouldClose(window, true); // We will detect this in the rendering loop
+            if (System.currentTimeMillis() - acting < 150){
+                return;
+            }
+            acting = System.currentTimeMillis();
             if( key == GLFW_KEY_RIGHT){
                 if (isXInBounds(c,MOVEMENT_DELTA)) {
                     c.incrementX(MOVEMENT_DELTA);

@@ -103,7 +103,7 @@ public class MazeGame {
         GL.createCapabilities();
 
         // Set the clear color
-        glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0f, 0.0f, 0.0f, 0.0f);
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
@@ -111,7 +111,7 @@ public class MazeGame {
             c.draw();
             for (float i = -1.0f; i < 1; i += .2){
                 glBegin(GL_LINES);
-                glLineWidth(3);
+                glLineWidth(10);
                 glVertex2f(-1, i);
                 glVertex2f(1, i);
                 glEnd();

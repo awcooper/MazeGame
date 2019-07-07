@@ -19,7 +19,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class MazeGame {
     // The window handle
     private long window;
-    private Circle c = new Circle(.1f,.25f,.25f);
+    private Circle c = new Circle(.1f,.1f,.1f);
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
@@ -109,6 +109,14 @@ public class MazeGame {
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
             c.draw();
+            for (float i = -1.0f; i < 1; i += .1){
+                glBegin(GL_LINES);
+                glLineWidth(3);
+                glVertex2f(0, i);
+                glVertex2f(1, i);
+                glEnd();
+                glFlush();
+            }
             glfwSwapBuffers(window); // swap the color buffers
             // Poll for window events. The key callback above will only be
             // invoked during this call.

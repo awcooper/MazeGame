@@ -6,23 +6,26 @@ import java.lang.*;
 public class Circle {
 
     private final float radius;
-    private float y;
-    private float x;
+    private int y;
+    private int x;
 
-    public Circle(float radius, float x, float y) {
+    public Circle(float radius, int x, int y) {
         this.radius = radius;
         this.x = x;
         this.y = y;
     }
 
     public void draw(){
+        float SQUARE_SIZE = .2f;
         glColor3f(1.0f,1.0f,1.0f);
         glBegin(GL_TRIANGLE_FAN);
         float xcord;
         float ycord;
+        float xstart = this.x * SQUARE_SIZE - 1 + (SQUARE_SIZE / 2);
+        float ystart = this.y * SQUARE_SIZE - 1 + (SQUARE_SIZE / 2);
         for (float i = 0; i < 360; i++){
-            xcord = (float) Math.cos(Math.toRadians(i)) * this.radius + this.x;
-            ycord = (float) Math.sin(Math.toRadians(i)) * this.radius + this.y;
+            xcord = (float) Math.cos(Math.toRadians(i)) * this.radius + xstart;
+            ycord = (float) Math.sin(Math.toRadians(i)) * this.radius + ystart;
             glVertex2f(xcord,ycord);
         }
         glEnd();
@@ -37,9 +40,9 @@ public class Circle {
         this.y += dy;
     }
 
-    public float getX() { return this.x; }
+    public int getX() { return this.x; }
 
-    public float getY() { return this.y; }
+    public int getY() { return this.y; }
 
     public float getRadius() { return this.radius; }
 }

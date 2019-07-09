@@ -21,7 +21,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class MazeGame {
     // The window handle
     private long window;
-    private Circle c = new Circle(.1f,.1f,.1f);
+    private Circle c = new Circle(.1f,0,0);
     private Maze m = new Maze(10, 10);
 
     public void run() {
@@ -67,7 +67,7 @@ public class MazeGame {
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
 
-        CircleController.addCircleEventListener(window,c);
+        CircleController.addCircleEventListener(window,c,m);
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {

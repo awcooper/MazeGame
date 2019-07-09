@@ -18,10 +18,11 @@ public class Maze {
                 grid[i][j] = rand.nextBoolean();
             }
         }
+        grid[0][0] = true;
     }
 
-    public boolean getCoord(int row, int col){
-        return this.grid[row][col];
+    public boolean getCoord(int col, int row){
+        return 0 <= row && row < this.height && 0 <= col && col < this.width && this.grid[row][col];
     }
 
     public int getHeight(){

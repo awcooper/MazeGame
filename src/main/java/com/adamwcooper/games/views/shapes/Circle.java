@@ -6,8 +6,8 @@ import java.lang.*;
 public class Circle {
 
     private final float radius;
-    static float y;
-    static float x;
+    private float y;
+    private float x;
 
     public Circle(float radius, float x, float y) {
         this.radius = radius;
@@ -16,6 +16,7 @@ public class Circle {
     }
 
     public void draw(){
+        glColor3f(1.0f,1.0f,1.0f);
         glBegin(GL_TRIANGLE_FAN);
         float xcord;
         float ycord;

@@ -5,6 +5,8 @@ import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
 import com.adamwcooper.games.views.shapes.Circle;
+import com.adamwcooper.games.views.shapes.Maze;
+
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
@@ -20,6 +22,7 @@ public class MazeGame {
     // The window handle
     private long window;
     private Circle c = new Circle(.1f,.1f,.1f);
+    private Maze m = new Maze(10, 10);
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
@@ -108,16 +111,17 @@ public class MazeGame {
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+            m.draw();
             c.draw();
             for (float i = -1.0f; i < 1; i += .2){
+                glColor3f(0.5f,0.5f,1.0f);
                 glBegin(GL_LINES);
-                glLineWidth(10);
                 glVertex2f(-1, i);
                 glVertex2f(1, i);
                 glEnd();
                 glFlush();
                 glBegin(GL_LINES);
-                glLineWidth(3);
+                glLineWidth(10);
                 glVertex2f(i,-1);
                 glVertex2f(i,1);
                 glEnd();

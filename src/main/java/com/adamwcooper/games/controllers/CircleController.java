@@ -1,8 +1,8 @@
 package com.adamwcooper.games.controllers;
 
 
-import com.adamwcooper.games.views.shapes.Circle;
-import com.adamwcooper.games.views.shapes.Maze;
+import com.adamwcooper.games.models.Circle;
+import com.adamwcooper.games.models.Maze;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_DOWN;

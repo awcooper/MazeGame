@@ -1,11 +1,12 @@
 package com.adamwcooper.games;
 
 import com.adamwcooper.games.controllers.CircleController;
+import com.adamwcooper.games.views.NeonThemePrinter;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
-import com.adamwcooper.games.views.shapes.Circle;
-import com.adamwcooper.games.views.shapes.Maze;
+import com.adamwcooper.games.models.Circle;
+import com.adamwcooper.games.models.Maze;
 
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
@@ -111,8 +112,8 @@ public class MazeGame {
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-            m.draw();
-            c.draw();
+            NeonThemePrinter.print(m);
+            NeonThemePrinter.print(c);
             for (float i = -1.0f; i < 1; i += .2){
                 glColor3f(0.5f,0.5f,1.0f);
                 glBegin(GL_LINES);

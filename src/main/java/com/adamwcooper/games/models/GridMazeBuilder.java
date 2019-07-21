@@ -16,7 +16,7 @@ public class GridMazeBuilder implements MazeBuilder<GridMaze> {
     }
 
     public void setWidth(int width){
-        this.height = width;
+        this.width = width;
         this.grid = new boolean[this.height][this.width];
     }
 

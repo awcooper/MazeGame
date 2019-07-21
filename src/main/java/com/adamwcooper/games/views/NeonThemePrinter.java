@@ -6,7 +6,7 @@ import com.adamwcooper.games.models.GridMaze;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glFlush;
 
-public class NeonThemePrinter implements GamePrinter {
+public class NeonThemePrinter implements GamePrinter<GridMaze> {
 
     public void print(Circle c){
         float SQUARE_SIZE = .2f;

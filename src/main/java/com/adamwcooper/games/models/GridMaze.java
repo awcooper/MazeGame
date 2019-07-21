@@ -22,7 +22,7 @@ public class GridMaze implements Maze {
         grid[0][0] = true;
     }
 
-    public boolean getCoord(int col, int row){
+    public boolean getCoord(int row, int col){
         return isCoordInBounds(row,col) && this.grid[row][col];
     }
 
@@ -44,7 +44,7 @@ public class GridMaze implements Maze {
 
     public boolean canMove(int startRow, int startCol, int endRow, int endCol){
         return  isCoordInBounds(startRow,startCol) &&
-                isCoordInBounds(endRow,endCol) &&
+                getCoord(endRow,endCol) &&
                 areAdjacent(startRow,startCol,endRow,endCol);
     }
 

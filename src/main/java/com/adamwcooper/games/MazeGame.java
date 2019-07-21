@@ -2,6 +2,7 @@ package com.adamwcooper.games;
 
 import com.adamwcooper.games.controllers.CircleController;
 import com.adamwcooper.games.models.GridMaze;
+import com.adamwcooper.games.models.GridMazeBuilder;
 import com.adamwcooper.games.views.NeonThemePrinter;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -13,6 +14,8 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.system.MemoryStack;
 
 import java.nio.IntBuffer;
+import java.util.Random;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
@@ -23,10 +26,24 @@ public class MazeGame {
     // The window handle
     private long window;
     private Circle c = new Circle(.1f,0,0);
-    private GridMaze m = new GridMaze(10, 10);
+    private GridMaze m;
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
+        GridMazeBuilder mb = new GridMazeBuilder();
+        int height = 10;
+        int width = 10;
+
+        mb.setHeight(height);
+        mb.setWidth(width);
+        Random rand = new Random();
+        for (int i = 0; i < height; i++){
+            for (int j = 0; j < width; j++){
+                mb.setGridCoord(i, j, rand.nextBoolean());
+            }
+        }
+
+        m = mb.build();
 
         init();
         loop();

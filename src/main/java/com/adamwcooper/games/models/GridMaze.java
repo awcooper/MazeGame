@@ -9,17 +9,10 @@ public class GridMaze implements Maze {
     private int width;
     private boolean[][] grid;
 
-    public GridMaze(int width, int height){
+    public GridMaze(int height, int width, boolean[][] grid){
         this.width = width;
         this.height = height;
-        Random rand = new Random();
-        grid = new boolean[height][width];
-        for (int i = 0; i < height; i++){
-            for (int j = 0; j < width; j++){
-                grid[i][j] = rand.nextBoolean();
-            }
-        }
-        grid[0][0] = true;
+        this.grid = grid;
     }
 
     private boolean isRowInBounds(int row){
@@ -48,7 +41,9 @@ public class GridMaze implements Maze {
                 areAdjacent(startRow,startCol,endRow,endCol);
     }
 
-    public int getHeight(){ return this.height; }
+    public int getHeight(){
+        return this.height;
+    }
 
     public int getWidth(){
         return this.width;

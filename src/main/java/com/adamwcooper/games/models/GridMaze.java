@@ -22,23 +22,23 @@ public class GridMaze implements Maze {
         grid[0][0] = true;
     }
 
+    private boolean isRowInBounds(int row){
+        return 0 <= row && row < this.height;
+    }
+
+    private boolean isColInBounds(int col){
+        return 0 <= col && col < this.width;
+    }
+
+    private boolean isCoordInBounds(int row, int col){
+        return isRowInBounds(row) && isColInBounds(col);
+    }
+
     public boolean getCoord(int row, int col){
         return isCoordInBounds(row,col) && this.grid[row][col];
     }
 
-    boolean isCoordInBounds(int row, int col){
-        return isRowInBounds(row) && isColInBounds(col);
-    }
-
-    boolean isRowInBounds(int row){
-        return 0 <= row && row < this.height;
-    }
-
-    boolean isColInBounds(int col){
-        return 0 <= col && col < this.width;
-    }
-
-    boolean areAdjacent(int rowA, int colA, int rowB, int colB){
+    private boolean areAdjacent(int rowA, int colA, int rowB, int colB){
         return abs(rowA - rowB) < 2 && abs(colA - colB) < 2;
     }
 

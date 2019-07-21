@@ -61,7 +61,7 @@ public class MazeGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(500, 500, "GridMaze Explorer!", NULL, NULL);
+        window = glfwCreateWindow(500, 500, "Maze Explorer!", NULL, NULL);
 
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
@@ -115,20 +115,6 @@ public class MazeGame {
             NeonThemePrinter p = new NeonThemePrinter();
             p.print(m);
             p.print(c);
-            for (float i = -1.0f; i < 1; i += .2){
-                glColor3f(0.5f,0.5f,1.0f);
-                glBegin(GL_LINES);
-                glVertex2f(-1, i);
-                glVertex2f(1, i);
-                glEnd();
-                glFlush();
-                glBegin(GL_LINES);
-                glLineWidth(10);
-                glVertex2f(i,-1);
-                glVertex2f(i,1);
-                glEnd();
-                glFlush();
-            }
             glfwSwapBuffers(window); // swap the color buffers
             // Poll for window events. The key callback above will only be
             // invoked during this call.

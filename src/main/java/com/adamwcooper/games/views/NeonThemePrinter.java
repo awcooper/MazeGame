@@ -33,6 +33,20 @@ public class NeonThemePrinter implements GamePrinter {
                 }
             }
         }
+        for (float i = -1.0f; i < 1; i += .2){
+            glColor3f(0.5f,0.5f,1.0f);
+            glBegin(GL_LINES);
+            glVertex2f(-1, i);
+            glVertex2f(1, i);
+            glEnd();
+            glFlush();
+            glBegin(GL_LINES);
+            glLineWidth(10);
+            glVertex2f(i,-1);
+            glVertex2f(i,1);
+            glEnd();
+            glFlush();
+        }
     }
 
     private void drawGridCell(int row, int col){

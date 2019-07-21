@@ -1,8 +1,5 @@
 package com.adamwcooper.games.models;
 
-import static org.lwjgl.opengl.GL11.*;
-import java.lang.*;
-
 public class Circle {
 
     private final float radius;

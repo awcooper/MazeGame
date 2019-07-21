@@ -1,2 +1,2 @@
 # MazeGame
-A maze game written in Java
+A gridMaze game written in Java

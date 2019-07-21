@@ -1,12 +1,12 @@
 package com.adamwcooper.games;
 
 import com.adamwcooper.games.controllers.CircleController;
+import com.adamwcooper.games.models.GridMaze;
 import com.adamwcooper.games.views.NeonThemePrinter;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 
 import com.adamwcooper.games.models.Circle;
-import com.adamwcooper.games.models.Maze;
 
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
@@ -23,7 +23,7 @@ public class MazeGame {
     // The window handle
     private long window;
     private Circle c = new Circle(.1f,0,0);
-    private Maze m = new Maze(10, 10);
+    private GridMaze m = new GridMaze(10, 10);
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
@@ -61,7 +61,7 @@ public class MazeGame {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
 
         // Create the window
-        window = glfwCreateWindow(500, 500, "Maze Explorer!", NULL, NULL);
+        window = glfwCreateWindow(500, 500, "GridMaze Explorer!", NULL, NULL);
 
         if ( window == NULL )
             throw new RuntimeException("Failed to create the GLFW window");
@@ -112,8 +112,9 @@ public class MazeGame {
         // the window or has pressed the ESCAPE key.
         while ( !glfwWindowShouldClose(window) ) {
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-            NeonThemePrinter.print(m);
-            NeonThemePrinter.print(c);
+            NeonThemePrinter p = new NeonThemePrinter();
+            p.print(m);
+            p.print(c);
             for (float i = -1.0f; i < 1; i += .2){
                 glColor3f(0.5f,0.5f,1.0f);
                 glBegin(GL_LINES);

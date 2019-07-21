@@ -1,14 +1,14 @@
 package com.adamwcooper.games.views;
 
 import com.adamwcooper.games.models.Circle;
-import com.adamwcooper.games.models.Maze;
+import com.adamwcooper.games.models.GridMaze;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glFlush;
 
-public class NeonThemePrinter {
+public class NeonThemePrinter implements GamePrinter {
 
-    public static void print(Circle c){
+    public void print(Circle c){
         float SQUARE_SIZE = .2f;
         glColor3f(1.0f,1.0f,1.0f);
         glBegin(GL_TRIANGLE_FAN);
@@ -25,7 +25,7 @@ public class NeonThemePrinter {
         glFlush();
     }
 
-    public static void print(Maze m){
+    public void print(GridMaze m){
         for (int i = 0; i < m.getHeight(); i += 1){
             for (int j = 0; j < m.getWidth(); j += 1){
                 if (m.getCoord(i,j)){
@@ -35,7 +35,7 @@ public class NeonThemePrinter {
         }
     }
 
-    private static void drawGridCell(int row, int col){
+    private void drawGridCell(int row, int col){
         float SQUARE_SIZE = .2f;
         glColor3f(0.5f,0.5f,1.0f);
         glBegin(GL_QUADS);

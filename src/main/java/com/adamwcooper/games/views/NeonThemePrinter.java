@@ -2,6 +2,7 @@ package com.adamwcooper.games.views;
 
 import com.adamwcooper.games.models.Circle;
 import com.adamwcooper.games.models.GridMaze;
+import org.lwjgl.system.CallbackI;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glFlush;
@@ -12,13 +13,14 @@ public class NeonThemePrinter implements GamePrinter<GridMaze> {
         float SQUARE_SIZE = .2f;
         glColor3f(1.0f,1.0f,1.0f);
         glBegin(GL_TRIANGLE_FAN);
+        float radius = SQUARE_SIZE / 2;
         float xcord;
         float ycord;
         float xstart = c.getX() * SQUARE_SIZE - 1 + (SQUARE_SIZE / 2);
         float ystart = c.getY() * SQUARE_SIZE - 1 + (SQUARE_SIZE / 2);
         for (float i = 0; i < 360; i++){
-            xcord = (float) Math.cos(Math.toRadians(i)) * c.getRadius() + xstart;
-            ycord = (float) Math.sin(Math.toRadians(i)) * c.getRadius() + ystart;
+            xcord = (float) Math.cos(Math.toRadians(i)) * radius + xstart;
+            ycord = (float) Math.sin(Math.toRadians(i)) * radius + ystart;
             glVertex2f(xcord,ycord);
         }
         glEnd();

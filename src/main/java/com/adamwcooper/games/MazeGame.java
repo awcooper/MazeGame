@@ -26,7 +26,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 public class MazeGame {
     // The window handle
     private long window;
-    private Circle c = new Circle(.1f,0,0);
+    private Circle c = new Circle(0,0);
     private GridMaze m = new RandomGridMazeBuilderStrategy().build();
 
     public void run() {

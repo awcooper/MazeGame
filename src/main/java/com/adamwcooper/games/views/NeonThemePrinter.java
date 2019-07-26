@@ -2,7 +2,6 @@ package com.adamwcooper.games.views;
 
 import com.adamwcooper.games.models.Circle;
 import com.adamwcooper.games.models.GridMaze;
-import org.lwjgl.system.CallbackI;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glFlush;

@@ -2,8 +2,7 @@ package com.adamwcooper.games;
 
 import com.adamwcooper.games.controllers.CircleController;
 import com.adamwcooper.games.models.GridMaze;
-import com.adamwcooper.games.models.GridMazeBuilder;
-import com.adamwcooper.games.strategy.RandomGridMazeBuilderStrategy;
+import com.adamwcooper.games.strategy.StaircaseGridMazeStrategy;
 import com.adamwcooper.games.views.NeonThemePrinter;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -27,7 +26,7 @@ public class MazeGame {
     // The window handle
     private long window;
     private Circle c = new Circle(0,0);
-    private GridMaze m = new RandomGridMazeBuilderStrategy().build();
+    private GridMaze m = new StaircaseGridMazeStrategy().build();
 
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
